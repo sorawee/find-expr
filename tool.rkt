@@ -18,15 +18,15 @@
       (mixin ((class->interface text%)) ()
         (inherit find-first-snip)
         (define/augment (after-insert _start _len)
-          (let loop ([snip (find-first-snip)])
-            (when snip
-              (with-handlers ([exn:fail? void])
-                (when frame
+          (when frame
+            (let loop ([snip (find-first-snip)])
+              (when snip
+                (with-handlers ([exn:fail? void])
                   ;; NOTE: ideally we should be able to use is-a? note%
-                  ;; but it looks like note% are in different namespace
+                  ;; but it looks like note% is in a different namespace
                   ;; so it doesn't work
-                  (send snip set-frame frame)))
-              (loop (send snip next)))))
+                  (send snip set-frame frame))
+                (loop (send snip next))))))
         (super-new)))
 
     (define dummy-mixin
