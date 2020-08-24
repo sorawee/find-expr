@@ -1,0 +1,10 @@
+#lang info
+(define drracket-tool-names (list "Find Expression"))
+(define drracket-tools (list (list "tool.rkt")))
+(define collection "drracket-find-expr")
+(define deps '("base"))
+(define build-deps '("scribble-lib" "racket-doc" "rackunit-lib"))
+(define scribblings '(("scribblings/drracket-find-expr.scrbl" ())))
+(define pkg-desc "Find a corresponding expression in the definition window")
+(define version "0.0")
+(define pkg-authors '(sorawee))
